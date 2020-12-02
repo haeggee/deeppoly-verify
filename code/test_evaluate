@@ -8,7 +8,7 @@ do
 	for spec in `ls ../test_cases/${net}`
 	do
 	  TOTAL=$((TOTAL+1))
-	  GT=$(awk -v net="$net" -v spec="$spec" -F ',' '$1 == net && $2 == spec {print $3}' "../test_cases/gt.txt")
+	  GT=$(awk -v net="$net" -v spec="$spec" -F ',' '$1 == net && $2 == spec {print $3}' "test_cases/gt.txt")
 	  START=$(date +%s);
 		RESULT=$(python verifier.py --net ${net} --spec ../test_cases/${net}/${spec});
 		END=$(date +%s);
