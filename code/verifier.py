@@ -84,7 +84,7 @@ def analyze(net, inputs, eps, true_label, VERBOSE=False):
     ub = (ub - mean) / sigma
 
     opt = optim.Adam(verif_net.parameters(), lr=0.1)
-    num_iter = 100
+    num_iter = 1000
     for i in range(num_iter):
         opt.zero_grad()
         # need to create new DeepPoly each iter

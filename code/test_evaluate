@@ -1,0 +1,25 @@
+#!/bin/bash
+START_SCRIPT=$(date +%s);
+TOTAL=0
+CORRECT=0
+for net in fc1 fc2 fc3 fc4 fc5 fc6 fc7 conv1 conv2 conv3
+do
+	echo Evaluating network ${net}...
+	for spec in `ls ../test_cases/${net}`
+	do
+	  TOTAL=$((TOTAL+1))
+	  GT=$(awk -v net="$net" -v spec="$spec" -F ',' '$1 == net && $2 == spec {print $3}' "/home/barkmann/Dropbox/Uni/reliable_ai/project/012-riai-project-2020/test_cases/gt.txt")
+	  START=$(date +%s);
+		RESULT=$(python verifier.py --net ${net} --spec ../test_cases/${net}/${spec});
+		END=$(date +%s);
+		echo "Ground truth: $GT, Result: $RESULT, Time: $((END-START))";
+		if [ "$GT" = "$RESULT" ]; then
+    CORRECT=$((CORRECT+1))
+    fi
+	done
+done
+
+END_SCRIPT=$(date +%s);
+
+echo "Total execution time: "$((END_SCRIPT-START_SCRIPT))
+echo "Correctly classified: $CORRECT / $TOTAL"

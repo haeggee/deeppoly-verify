@@ -18,3 +18,13 @@ conv2,img0_0.16800.txt,verified
 conv2,img1_0.13500.txt,verified
 conv3,img0_0.10500.txt,verified
 conv3,img1_0.11000.txt,verified
+fc1,img9_0.00900.txt,verified
+fc2,img3_0.10400.txt,verified
+fc3,img8_0.06300.txt,verified
+fc4,img8_0.04010.txt,verified
+fc5,img3_0.11100.txt,verified
+fc6,img7_0.03140.txt,verified
+fc7,img6_0.14400.txt,verified
+conv1,img1_0.11900.txt,verified
+conv2,img6_0.15900.txt,verified
+conv3,img0_0.16400.txt,verified
