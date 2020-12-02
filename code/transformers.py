@@ -52,9 +52,9 @@ class DPReLU(nn.Module):
         # self.lam.data = self.lam.where(ub.gt(-lb), torch.zeros_like(self.lam))
         a = torch.where((ub - lb) == 0, torch.ones_like(ub), ub / (ub - lb + 1e-6))
         
-        x.lb = lb * mask_1 + self.lam * lb * mask_3
+        x.lb = lb * mask_1 + 1/(1+torch.exp(self.lam)) * lb * mask_3
         x.ub = ub * mask_1 + ub * mask_3
-        curr_slb = 1 * mask_1 + self.lam * mask_3
+        curr_slb = 1 * mask_1 + 1/(1+torch.exp(self.lam)) * mask_3
         curr_sub = 1 * mask_1 + a * mask_3
         bias = - lb * a * mask_3
 

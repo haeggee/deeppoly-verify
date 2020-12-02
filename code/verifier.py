@@ -83,7 +83,7 @@ def analyze(net, inputs, eps, true_label, VERBOSE=False):
     lb = (lb - mean) / sigma
     ub = (ub - mean) / sigma
 
-    opt = optim.Adam(verif_net.parameters(), lr=0.1)
+    opt = optim.Adam(verif_net.parameters(), lr=1)
     num_iter = 1000
     for i in range(num_iter):
         opt.zero_grad()
@@ -115,14 +115,7 @@ def analyze(net, inputs, eps, true_label, VERBOSE=False):
 
         loss.backward()
         opt.step()
-        with torch.no_grad():
-            for param in verif_net.parameters():
-                # maybe find a better way to do this
-                # random restart, other things can go in here as well
-                # if i == int(num_iter / 2):
-                #     l = param.data.shape[0]
-                #     param.data = torch.rand(l)
-                param.data = param.data.clamp(0, 1)
+
 
 
 def main():
