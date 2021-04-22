@@ -1,5 +1,8 @@
 # RIAI 2020 Course Project
 
+This is the course project for the 2020 course Reliable and Interpretable AI taught at ETH Zürich by Martin Vechev. For the course description go [here](https://www.sri.inf.ethz.ch/teaching/riai2020).
+
+The goal of the project is a precise and scalable automated verifier for proving the robustness of fully connected and convolutional neural networks with ReLU activations against adversarial attacks. A network is vulnerable to this type of attack if there exists a misclassified image inside an L_inf -norm based ε-ball around the original image. The verifier makes use of the [DeepPoly](https://files.sri.inf.ethz.ch/website/papers/DeepPoly.pdf) relaxation.
 
 
 ## Folder structure
